@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Taradacktl/blog-post#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "uuid": "^3.2.1"
   }
 }
