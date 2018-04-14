@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 router.post('/', jsonParser, (req, res) => {
   // ensure `title`, `content`, `author`, and `publication date` are in request body
-  const requiredFields = ['title', 'content', 'author', 'publicationDate'];
+  const requiredFields = ['title', 'content', 'author', 'publishDate'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -25,7 +25,7 @@ router.post('/', jsonParser, (req, res) => {
       return res.status(400).send(message);
     }
   }
-  const item = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.publicationDate);
+  const item = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.publishDate);
   res.status(201).json(item);
 });
 
@@ -37,7 +37,7 @@ router.delete('/:id', (req, res) => {
 
 
 router.put('/:id', jsonParser, (req, res) => {
-  const requiredFields = ['title', 'content', 'author', 'publicationDate'];
+  const requiredFields = ['title', 'content', 'author', 'publishDate'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -59,7 +59,7 @@ router.put('/:id', jsonParser, (req, res) => {
     title: req.body.title,
     content: req.body.content,
     author: req.body.author,
-    publicationDate: req.body.publicationDate
+    publishDate: req.body.publishDate
   });
   res.status(204).end();
 })
