@@ -6,9 +6,9 @@ const jsonParser = bodyParser.json();
 
 const {BlogPosts} = require('./models');
 
-BlogPosts.create('camera', 'lense', 'flower', 'march');
-BlogPosts.create('camera', 'lense', 'flower', 'march');
-BlogPosts.create('camera', 'lense', 'flower', 'march');
+BlogPosts.create('cameras', 'lenses', 'Matt', 'March 31st');
+BlogPosts.create('trees', 'leaves', 'Bob', 'August 2nd');
+BlogPosts.create('flowers', 'pedals', 'Susie', 'April 1st');
 
 router.get('/', (req, res) => {
   res.json(BlogPosts.get());
