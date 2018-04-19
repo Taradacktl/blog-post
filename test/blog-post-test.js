@@ -82,6 +82,16 @@ describe('blog-posts', function() {
         expect(res.body).to.deep.equal(Object.assign(newItem, {id: res.body.id}));
       });
   });
+  
+  it('should error if POST missing expected values', function() {
+    const badRequestData = {};
+    return chai.request(app)
+      .post('/blog-posts')
+      .send(badRequestData)
+      .catch(function(res) {
+        expect(res).to.have.status(400);
+      });
+  });
 
   // test strategy:
   //  1. initialize some update data (we won't have an `id` yet)
