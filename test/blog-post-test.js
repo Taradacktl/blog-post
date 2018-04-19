@@ -96,8 +96,8 @@ describe('blog-post', function() {
     // request to the app, we update it with an `id` property so
     // we can make a second, PUT call to the app.
     const updateData = {
-      name: 'foo',
-      checked: true
+      title: 'weekend',
+      content: 'plans'
     };
 
     return chai.request(app)
