@@ -14,7 +14,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 
-describe('blog-post', function() {
+describe('blog-posts', function() {
 
   // Before our tests run, we activate the server. Our `runServer`
   // function returns a promise, and we return the that promise by
@@ -35,7 +35,7 @@ describe('blog-post', function() {
   });
 
   // test strategy:
-  //   1. make request to `/blog-post`
+  //   1. make request to `/blog-posts`
   //   2. inspect response object and prove has right code and have
   //   right keys in response object.
   it('should list items on GET', function() {
@@ -44,7 +44,7 @@ describe('blog-post', function() {
     // at the end of the test. The `chai.request(server).get...` call is asynchronous
     // and returns a Promise, so we just return it.
     return chai.request(app)
-      .get('/blog-post')
+      .get('/blog-posts')
       .then(function(res) {
         expect(res).to.have.status(200);
         expect(res).to.be.json;
@@ -69,7 +69,7 @@ describe('blog-post', function() {
   it('should add an item on POST', function() {
     const newItem = {title: 'thoughts', content: 'dreams', author: 'Bob' , publishDate: 'Nov 29'};
     return chai.request(app)
-      .post('/blog-post')
+      .post('/blog-posts')
       .send(newItem)
       .then(function(res) {
         expect(res).to.have.status(201);
@@ -102,7 +102,7 @@ describe('blog-post', function() {
 
     return chai.request(app)
       // first have to get so we have an idea of object to update
-      .get('/blog-post')
+      .get('/blog-posts')
       .then(function(res) {
         updateData.id = res.body[0].id;
         // this will return a promise whose value will be the response
@@ -111,7 +111,7 @@ describe('blog-post', function() {
         // returning a promise and chaining with `then`, but we find
         // this approach cleaner and easier to read and reason about.
         return chai.request(app)
-          .put(`/blog-post/${updateData.id}`)
+          .put(`/blog-posts/${updateData.id}`)
           .send(updateData);
       })
       // prove that the PUT request has right status code
@@ -132,10 +132,10 @@ describe('blog-post', function() {
     return chai.request(app)
       // first have to get so we have an `id` of item
       // to delete
-      .get('/blog-post')
+      .get('/blog-posts')
       .then(function(res) {
         return chai.request(app)
-          .delete(`/blog-post/${res.body[0].id}`);
+          .delete(`/blog-posts/${res.body[0].id}`);
       })
       .then(function(res) {
         expect(res).to.have.status(204);
