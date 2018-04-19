@@ -107,7 +107,8 @@ describe('blog-posts', function() {
     // we can make a second, PUT call to the app.
     const updateData = {
       title: 'weekend',
-      content: 'plans'
+      content: 'plans',
+      publishDate: 'march'
     };
 
     return chai.request(app)
@@ -127,10 +128,7 @@ describe('blog-posts', function() {
       // prove that the PUT request has right status code
       // and returns updated item
       .then(function(res) {
-        expect(res).to.have.status(200);
-        expect(res).to.be.json;
-        expect(res.body).to.be.a('object');
-        expect(res.body).to.deep.equal(updateData);
+        expect(res).to.have.status(204);
       });
   });
 
