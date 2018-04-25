@@ -6,7 +6,7 @@ const jsonParser = bodyParser.json();
 
 const {BlogPosts} = require('./models');
 
-BlogPosts.create('cameras', 'lenses', 'Matt', 'March 31st');
+BlogPosts.create('cameras', 'tree', 'Matt', 'March 31st');
 BlogPosts.create('trees', 'leaves', 'Bob', 'August 2nd');
 BlogPosts.create('flowers', 'pedals', 'Susie', 'April 1st');
 
